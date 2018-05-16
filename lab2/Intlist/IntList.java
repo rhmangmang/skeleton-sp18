@@ -82,16 +82,48 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList res = A;
+
+        if (A == null) return B;
+        while (res.rest != null)
+            res = res.rest;
+        res.rest = B;
+
+        return A;
     }
 
-    /**
-     * Returns a list consisting of the elements of A followed by the
-     * * elements of B.  May NOT modify items of A.  Use 'new'.
-     */
+    public static void removeDuplicates(IntList p) {
+        if (p == null) return;
+        int tempValue = p.first;
+        IntList tempP = p, moveP = p;
+        while (tempP.rest != null) {
+            moveP = tempP.rest;
+            if (tempValue == moveP.first) {
+                tempP.rest = moveP.rest;
+            } else {
+
+            }
+        }
+
+    }
+
+        /**
+         * Returns a list consisting of the elements of A followed by the
+         * * elements of B.  May NOT modify items of A.  Use 'new'.
+         */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if (A == null) return B;
+
+        IntList rel = new IntList(A.first, null);
+        IntList temp = rel;
+        while (A.rest != null) {
+            A = A.rest;
+            temp.rest = new IntList(A.first, null);
+            temp = temp.rest;
+        }
+        temp.rest = B;
+        return rel;
     }
 
 
